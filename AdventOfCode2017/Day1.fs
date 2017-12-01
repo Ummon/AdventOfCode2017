@@ -2,11 +2,10 @@
 
 let readDigit d = int d - int '0'
 
-let solveCaptchaPart1 (captcha : string) =
-    let numbers = captcha.ToCharArray () |> List.ofArray |> List.map readDigit
-    (List.last numbers :: numbers) |> List.pairwise |> List.map (fun (a, b) -> if a = b then a else 0) |> List.sum
+let solveCaptcha (shift : int) (captcha : string) =
+    let ns = captcha.ToCharArray () |> Array.map readDigit
+    let l = ns.Length
+    [ for i in 0 .. l - 1 -> if ns.[i] = ns.[(i + shift) % l] then ns.[i] else 0 ] |> List.sum
 
-let solveCaptchaPart2 (captcha : string) =
-    let numbers = captcha.ToCharArray () |> Array.map readDigit
-    let l = numbers.Length
-    [ for i in 0 .. l - 1 -> if numbers.[i] = numbers.[(i + l / 2) % l] then numbers.[i] else 0 ] |> List.sum
+let solveCaptcha1 = solveCaptcha 1
+let solveCaptcha2 captcha = solveCaptcha (String.length captcha / 2) captcha
