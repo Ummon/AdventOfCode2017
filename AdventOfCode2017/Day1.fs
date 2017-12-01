@@ -1,6 +1,6 @@
 ﻿module AdventOfCode2017.Day1
 
-let readDigit d = int d - 48
+let readDigit d = int d - int '0'
 
 let solveCaptchaPart1 (captcha : string) =
     let numbers = captcha.ToCharArray () |> List.ofArray |> List.map readDigit
