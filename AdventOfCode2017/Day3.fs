@@ -6,11 +6,11 @@ let spiral =
     Seq.unfold (
         fun (pos, dir, n, i) ->
             let x, y = directions.[dir]
-            let pos_ =  fst pos + x, snd pos + y
+            let pos' =  fst pos + x, snd pos + y
             let nMax = (i + 1) * 2 - 1
-            let i_, n_ = if n = nMax then i + 1, 0 else i, n + 1
-            let dir_ = if i <> i_ || n_ = nMax / 2 + 1 then (dir + 1) % 4 else dir
-            Some (pos, (pos_, dir_, n_, i_))
+            let i', n' = if n = nMax then i + 1, 0 else i, n + 1
+            let dir' = if i <> i' || n' = nMax / 2 + 1 then (dir + 1) % 4 else dir
+            Some (pos, (pos', dir', n', i'))
     ) ((0, 0), 0, 0, 0)
 
 let spiralManhattanDistanceSum (n : int) =
@@ -21,7 +21,7 @@ let spiralAdjacentSumBiggerThan (n : int) =
     let neighborsSum (dic : Map<int * int, int>) (pos : int * int) =
         let x, y = pos
         [ x + 1, y; x + 1, y + 1; x, y + 1; x - 1, y + 1; x - 1, y; x - 1, y - 1; x, y - 1; x + 1, y - 1]
-        |> List.map (fun (x, y) -> match dic |> Map.tryFind (x, y) with  Some v -> v | None -> 0)
+        |> List.map (fun (x, y) -> match dic |> Map.tryFind (x, y) with Some v -> v | None -> 0)
         |> List.sum
 
     spiral
