@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE = LICENSE
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Tests\Tests.fsproj", "{238BFFBE-E2D4-4DC4-804C-6E43205E4701}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D3555943-8102-43D1-B3CB-570A4E4EC513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3555943-8102-43D1-B3CB-570A4E4EC513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3555943-8102-43D1-B3CB-570A4E4EC513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238BFFBE-E2D4-4DC4-804C-6E43205E4701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238BFFBE-E2D4-4DC4-804C-6E43205E4701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238BFFBE-E2D4-4DC4-804C-6E43205E4701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238BFFBE-E2D4-4DC4-804C-6E43205E4701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

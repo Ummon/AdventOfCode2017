@@ -1,43 +1,31 @@
 ﻿module AdventOfCode2017.Day3
 
-type Direction = Right | Up | Left | Down
+let directions = [| 1, 0; 0, 1; -1, 0; 0, -1 |]
 
-let nextDirection = function Right -> Up | Up -> Left | Left -> Down | Down -> Right
-
-let move (pos : int * int) (d : Direction) =
-    let x, y = pos
-    match d with Right -> x + 1, y | Up -> x, y + 1 | Left -> x - 1, y | Down -> x, y - 1
-
-let rec next (pos : int * int) (l : int) (d : Direction) : (int * int) seq =
-    let directions = Seq.unfold (fun d -> Some (d, nextDirection d)) d |> Seq.take 3 |> List.ofSeq
-
-    let mutable pos' = pos
-
-    seq {
-        for d in directions |> List.take 2 do
-            for _j = 1 to l do
-                pos' <- move pos' d
-                yield pos'
-        yield! next pos' (l + 1) (List.last directions)
-    }
+let spiral =
+    Seq.unfold (
+        fun (pos, dir, n, i) ->
+            let x, y = directions.[dir]
+            let pos_ =  fst pos + x, snd pos + y
+            let nMax = (i + 1) * 2 - 1
+            let i_, n_ = if n = nMax then i + 1, 0 else i, n + 1
+            let dir_ = if i <> i_ || n_ = nMax / 2 + 1 then (dir + 1) % 4 else dir
+            Some (pos, (pos_, dir_, n_, i_))
+    ) ((0, 0), 0, 0, 0)
 
 let spiralManhattanDistanceSum (n : int) =
-    let x, y = next (0, 0) 1 Right |> Seq.item (n - 2)
+    let x, y = spiral |> Seq.item (n - 1)
     abs x + abs y
 
 let spiralAdjacentSumBiggerThan (n : int) =
     let neighborsSum (dic : Map<int * int, int>) (pos : int * int) =
         let x, y = pos
         [ x + 1, y; x + 1, y + 1; x, y + 1; x - 1, y + 1; x - 1, y; x - 1, y - 1; x, y - 1; x + 1, y - 1]
-        |> List.map (
-            fun (x, y) ->
-                match dic |> Map.tryFind (x, y) with
-                | Some v -> v
-                | None -> 0
-        )
+        |> List.map (fun (x, y) -> match dic |> Map.tryFind (x, y) with  Some v -> v | None -> 0)
         |> List.sum
 
-    next (0, 0) 1 Right
+    spiral
+    |> Seq.skip 1
     |> Seq.scan (
         fun (_sum, dic) pos ->
             let sum = neighborsSum dic pos
