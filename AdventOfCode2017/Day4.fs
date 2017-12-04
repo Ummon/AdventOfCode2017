@@ -16,5 +16,5 @@ let isAnagram (w1 : string) (w2 : string) =
 
 let passphraseValidAnagram = forallDistinctPairs isAnagram
 
-let nbPassphrasesValid (f : string -> bool) (pps : string seq) =
-    pps |> Seq.map f |> Seq.fold (fun sum valid -> if valid then sum + 1 else sum) 0
+let nbPassphrasesValid (f : string -> bool) =
+    Seq.map f >> Seq.sumBy (fun v -> if v then 1 else 0)
