@@ -1,13 +1,14 @@
 ﻿module AdventOfCode2017.Main
 
 open System.IO
+open System
 
 let day1 () =
-    let captcha = File.ReadAllText "Data/day1" |> Day1.parseInput
+    let captcha = File.ReadAllText "Data/day1.input" |> Day1.parseInput
     sprintf "part1 = %A, part2 = %A" (Day1.solveCaptcha1 captcha) (Day1.solveCaptcha2 captcha)
 
 let day2 () =
-    let array = File.ReadAllText "Data/day2" |> Day2.parseInput
+    let array = File.ReadAllText "Data/day2.input" |> Day2.parseInput
     sprintf "part1 = %A, part2 = %A" (Day2.checksum1 array) (Day2.checksum2 array)
 
 let day3 () =
@@ -21,10 +22,11 @@ let day4 () =
 let doDay (n : int) =
     let result =
         match n with
+        | 1 -> day1 ()
         | 2 -> day2 ()
         | 3 -> day3 ()
         | 4 -> day4 ()
-        | _ -> day1 ()
+        | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s" n result
 
 [<EntryPoint>]
@@ -34,6 +36,6 @@ let main argv =
     if argv.Length > 0 then
         doDay (int argv.[0])
     else
-        for d = 1 to 24 do
+        for d = 1 to 25 do
             doDay d
     0

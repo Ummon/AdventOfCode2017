@@ -62,10 +62,10 @@
     <Compile Include="Day4.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
-    <None Include="Data\day1">
+    <None Include="Data\day1.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Data\day2">
+    <None Include="Data\day2.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\day4.input">

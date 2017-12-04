@@ -4,20 +4,20 @@ open System.Reflection
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
 
-// General Information about an assembly is controlled through the following 
+// General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [<assembly: AssemblyTitle("AdventOfCode2017")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
-[<assembly: AssemblyCompany("MATISA Matériel Industriel S.A.")>]
+[<assembly: AssemblyCompany("")>]
 [<assembly: AssemblyProduct("AdventOfCode2017")>]
-[<assembly: AssemblyCopyright("Copyright © MATISA Matériel Industriel S.A. 2017")>]
+[<assembly: AssemblyCopyright("")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [<assembly: ComVisible(false)>]
 
@@ -25,13 +25,13 @@ open System.Runtime.InteropServices
 [<assembly: Guid("d3555943-8102-43d1-b3cb-570a4e4ec513")>]
 
 // Version information for an assembly consists of the following four values:
-// 
+//
 //       Major Version
-//       Minor Version 
+//       Minor Version
 //       Build Number
 //       Revision
-// 
-// You can specify all the values or you can default the Build and Revision Numbers 
+//
+// You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [<assembly: AssemblyVersion("1.0.*")>]
 [<assembly: AssemblyVersion("1.0.0.0")>]
