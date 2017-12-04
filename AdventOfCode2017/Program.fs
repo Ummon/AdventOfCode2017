@@ -14,11 +14,16 @@ let day3 () =
     let input = 325489
     sprintf "part1 = %A, part2 = %A" (Day3.spiralManhattanDistanceSum input) (Day3.spiralAdjacentSumBiggerThan input)
 
+let day4 () =
+    let input = File.ReadAllLines "Data/day4.input"
+    sprintf "part1 = %A, part2 = %A" (Day4.nbPassphrasesValid Day4.passphraseValid input) (Day4.nbPassphrasesValid Day4.passphraseValidAnagram input)
+
 let doDay (n : int) =
     let result =
         match n with
         | 2 -> day2 ()
         | 3 -> day3 ()
+        | 4 -> day4 ()
         | _ -> day1 ()
     printfn "Result of day %i: %s" n result
 
