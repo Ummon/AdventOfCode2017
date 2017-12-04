@@ -8,6 +8,6 @@ let forallDistinctPairs (f : string -> string -> bool) (pp : string) =
     ] |> List.forall not
 
 let passphraseValid = forallDistinctPairs (=)
-let isAnagram (w1 : string) (w2 : string) = (w1.ToCharArray () |> Array.sort) = (w2.ToCharArray () |> Array.sort)
+let isAnagram w1 w2 = Seq.sort w1 = Seq.sort w2
 let passphraseValidAnagram = forallDistinctPairs isAnagram
 let nbPassphrasesValid (f : string -> bool) = Seq.map f >> Seq.sumBy (fun v -> if v then 1 else 0)
