@@ -1,7 +1,5 @@
 ﻿module AdventOfCode2017.Day4
 
-open System
-
 let forallDistinctPairs (f : string -> string -> bool) (pp : string) =
     let words = pp.Split ' '
     [
@@ -10,11 +8,6 @@ let forallDistinctPairs (f : string -> string -> bool) (pp : string) =
     ] |> List.forall not
 
 let passphraseValid = forallDistinctPairs (=)
-
-let isAnagram (w1 : string) (w2 : string) =
-    (w1.ToCharArray () |> Array.sort) = (w2.ToCharArray () |> Array.sort)
-
+let isAnagram (w1 : string) (w2 : string) = (w1.ToCharArray () |> Array.sort) = (w2.ToCharArray () |> Array.sort)
 let passphraseValidAnagram = forallDistinctPairs isAnagram
-
-let nbPassphrasesValid (f : string -> bool) =
-    Seq.map f >> Seq.sumBy (fun v -> if v then 1 else 0)
+let nbPassphrasesValid (f : string -> bool) = Seq.map f >> Seq.sumBy (fun v -> if v then 1 else 0)
