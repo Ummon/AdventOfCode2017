@@ -20,8 +20,8 @@ let day4 () =
     sprintf "part1 = %A, part2 = %A" (Day4.nbPassphrasesValid Day4.passphraseValid input) (Day4.nbPassphrasesValid Day4.passphraseValidAnagram input)
 
 let day5 () =
-    let input = File.ReadAllText "Data/day5.input"
-    sprintf "part1 = %A, part2 = %A" (Day5.nbSteps1 (Day5.parseInput input)) (Day5.nbSteps2 (Day5.parseInput input))
+    let input = File.ReadAllText "Data/day5.input" |> Day5.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day5.nbSteps1 input) (Day5.nbSteps2 input)
 
 let doDay (n : int) =
     let result =
