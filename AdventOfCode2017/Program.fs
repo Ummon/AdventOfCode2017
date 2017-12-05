@@ -19,6 +19,10 @@ let day4 () =
     let input = File.ReadAllLines "Data/day4.input"
     sprintf "part1 = %A, part2 = %A" (Day4.nbPassphrasesValid Day4.passphraseValid input) (Day4.nbPassphrasesValid Day4.passphraseValidAnagram input)
 
+let day5 () =
+    let input = File.ReadAllText "Data/day5.input"
+    sprintf "part1 = %A, part2 = %A" (Day5.nbSteps1 (Day5.parseInput input)) (Day5.nbSteps2 (Day5.parseInput input))
+
 let doDay (n : int) =
     let result =
         match n with
@@ -26,6 +30,7 @@ let doDay (n : int) =
         | 2 -> day2 ()
         | 3 -> day3 ()
         | 4 -> day4 ()
+        | 5 -> day5 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s" n result
 
