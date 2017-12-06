@@ -1,9 +1,6 @@
 ﻿module AdventOfCode2017.Day6
 
 open System
-open System.Linq
-
-type Blocks = int[]
 
 let parseInput (str : string) : int[] =
     str.Split ([| '\r'; '\t'; ' ' |], StringSplitOptions.RemoveEmptyEntries) |> Array.map int
@@ -22,8 +19,8 @@ let inline (|=|) (a1 : 'a[]) (a2 : 'a[]) : bool =
                 result (i + 1)
         result 0
 
-let nbRedistribution (blocks : Blocks) =
-    let rec next (previous : Blocks list) =
+let nbRedistribution (blocks : int[]) =
+    let rec next (previous : int[] list) =
         let blocks = List.head previous |> Array.copy
         let i, max = blocks |> Array.indexed |> Array.maxBy snd
         blocks.[i] <- 0
