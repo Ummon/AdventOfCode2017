@@ -23,6 +23,11 @@ let day5 () =
     let input = File.ReadAllText "Data/day5.input" |> Day5.parseInput
     sprintf "part1 = %A, part2 = %A" (Day5.nbSteps1 input) (Day5.nbSteps2 input)
 
+let day6 () =
+    let input = File.ReadAllText "Data/day6.input" |> Day6.parseInput
+    let part1, part2 = Day6.nbRedistribution input
+    sprintf "part1 = %A, part2 = %A" part1 part2
+
 let doDay (n : int) =
     let result =
         match n with
@@ -31,6 +36,7 @@ let doDay (n : int) =
         | 3 -> day3 ()
         | 4 -> day4 ()
         | 5 -> day5 ()
+        | 6 -> day6 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s" n result
 
