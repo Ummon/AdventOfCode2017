@@ -29,6 +29,8 @@ let day6 () =
     sprintf "part1 = %A, part2 = %A" part1 part2
 
 let doDay (n : int) =
+    let sw = Diagnostics.Stopwatch ()
+    sw.Start ()
     let result =
         match n with
         | 1 -> day1 ()
@@ -38,7 +40,7 @@ let doDay (n : int) =
         | 5 -> day5 ()
         | 6 -> day6 ()
         | _ -> raise <| NotImplementedException ()
-    printfn "Result of day %i: %s" n result
+    printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
 [<EntryPoint>]
 let main argv =
