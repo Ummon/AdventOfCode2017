@@ -18,12 +18,7 @@ let parseInput (lines : string list) : Input =
     |> List.map (
         fun line ->
             let items = line.Split ([| '\r'; '\t'; ' '; ','; ')'; '(' |], StringSplitOptions.RemoveEmptyEntries)
-            {
-                Name = items.[0]
-                Weight = int items.[1]
-                Above = List<Tower> ()
-            },
-            [ for i in 3 .. items.Length - 1 -> items.[i] ]
+            { Name = items.[0]; Weight = int items.[1]; Above = List<Tower> () }, [ for i in 3 .. items.Length - 1 -> items.[i] ]
     )
 
 let buildTower (input : Input) : Tower =
