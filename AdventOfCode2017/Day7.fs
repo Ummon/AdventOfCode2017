@@ -46,4 +46,4 @@ let rec findUnbalanced (tower : Tower) : (Tower * int) option =
 
     match tower.Above |> List.ofSeq |> List.groupBy weight |> List.sortBy (snd >> List.length) with
     | [ w1, [ unbalanced ]; w2, _ ] -> findUnbalanced unbalanced |> Option.orElse (Some (unbalanced, unbalanced.Weight + w2 - w1))
-    | _ -> tower.Above |> Seq.tryPick (fun t -> findUnbalanced t)
+    | _ -> tower.Above |> Seq.tryPick findUnbalanced
