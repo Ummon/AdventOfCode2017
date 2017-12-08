@@ -54,3 +54,25 @@ type ``Day7 tests`` (output : ITestOutputHelper) =
             tower.Name =! "ugml"
             weight =! 60
         | None -> failwith "no tower found"
+
+    [<Fact>]
+    let ``(Part2) A balanced tree`` () =
+        let input =
+            [
+                "pbga (66)"
+                "xhth (57)"
+                "ebii (61)"
+                "havc (66)"
+                "ktlj (57)"
+                "fwft (72) -> ktlj, cntj, xhth"
+                "qoyq (66)"
+                "padx (45) -> pbga, havc, qoyq"
+                "tknk (41) -> ugml, padx, fwft"
+                "jptl (61)"
+                "ugml (60) -> gyxo, ebii, jptl"
+                "gyxo (61)"
+                "cntj (57)"
+            ]
+        let tower = Day7.buildTower (Day7.parseInput input)
+
+        Day7.findUnbalanced tower =! None
