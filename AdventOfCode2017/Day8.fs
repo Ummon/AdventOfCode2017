@@ -21,8 +21,7 @@ let execute (input : Instruction list) : int * int =
                 let regCondValue = register |> Map.tryFind regCond |> Option.defaultValue 0
                 let op' = match op with ">" -> (>) | "<" -> (<) | ">=" -> (>=) | "<=" -> (<=) | "!=" -> (<>) | "==" | _ -> (=)
                 if op' regCondValue valueCond then
-                    let regValue = register |> Map.tryFind reg |> Option.defaultValue 0
-                    let regValue' = match ins with "inc" -> regValue + value | "dec" -> regValue - value | _ -> regValue
+                    let regValue' = (register |> Map.tryFind reg |> Option.defaultValue 0) + match ins with "inc" -> value | "dec" -> -value | _ -> 0
                     max highest regValue', register |> Map.add reg regValue'
                 else
                     highest, register
