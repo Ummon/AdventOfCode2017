@@ -37,7 +37,7 @@ let buildTower (input : Input) : Tower =
 // Returns the tower and its corrected weight.
 let rec findUnbalanced (tower : Tower) : (Tower * int) option =
     let rec weight tower =
-        tower.Weight + (tower.Above |> Seq.map weight |> Seq.sum)
+        tower.Weight + (tower.Above |> Seq.sumBy weight)
 
     match tower.Above |> List.ofSeq |> List.groupBy weight |> List.sortBy (snd >> List.length) with
     | [ w1, [ unbalanced ]; w2, _ ] ->

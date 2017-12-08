@@ -21,8 +21,7 @@ let spiralAdjacentSumBiggerThan (n : int) =
     let neighborsSum (dic : Map<int * int, int>) (pos : int * int) =
         let x, y = pos
         [ for dx in -1 .. 1 do for dy in -1 .. 1 -> x + dx, y + dy ]
-        |> List.map (fun (x, y) -> match dic |> Map.tryFind (x, y) with Some v -> v | None -> 0)
-        |> List.sum
+        |> List.sumBy (fun (x, y) -> match dic |> Map.tryFind (x, y) with Some v -> v | None -> 0)
 
     spiral
     |> Seq.skip 1

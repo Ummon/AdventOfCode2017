@@ -7,13 +7,11 @@ let parseInput (str : string) : int[][] =
     |> Array.map (fun line -> line.Split ([| ' '; '\t' |], StringSplitOptions.RemoveEmptyEntries) |> Array.map int)
 
 let checksum1 (a : int[][]) =
-    a
-    |> Array.map (fun ns -> Array.max ns - Array.min ns)
-    |> Array.sum
+    a |> Array.sumBy (fun ns -> Array.max ns - Array.min ns)
 
 let checksum2 (a : int[][]) =
     a
-    |> Array.map (
+    |> Array.sumBy (
         fun ns ->
             seq {
                 for a in ns do
@@ -21,4 +19,3 @@ let checksum2 (a : int[][]) =
                         if a <> b && a % b = 0 then yield a / b
             } |> Seq.head
     )
-    |> Array.sum
