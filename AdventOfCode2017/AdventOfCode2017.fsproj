@@ -25,7 +25,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>bin\$(Configuration)\$(AssemblyName).XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
-    <StartArguments>7</StartArguments>
+    <StartArguments>8</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -63,6 +63,7 @@
     <Compile Include="Day5.fs" />
     <Compile Include="Day6.fs" />
     <Compile Include="Day7.fs" />
+    <Compile Include="Day8.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <None Include="Data\day1.input">
@@ -81,6 +82,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\day7.input">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\day8.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="packages.config" />

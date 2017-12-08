@@ -33,6 +33,11 @@ let day7 () =
     let tower = Day7.buildTower input
     sprintf "part1 = %A, part2 = %A" tower.Name (Day7.findUnbalanced tower |> Option.map (fun (t, w) -> t.Name, w))
 
+let day8 () =
+    let input = File.ReadAllLines "Data/day8.input" |> Day8.parseInput
+    let part1, part2 = Day8.execute input
+    sprintf "part1 = %A, part2 = %A" part1 part2
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -45,6 +50,7 @@ let doDay (n : int) =
         | 5 -> day5 ()
         | 6 -> day6 ()
         | 7 -> day7 ()
+        | 8 -> day8 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
@@ -57,4 +63,6 @@ let main argv =
     else
         for d = 1 to 25 do
             doDay d
+
+    Console.ReadKey () |> ignore
     0
