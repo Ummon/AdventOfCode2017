@@ -38,6 +38,11 @@ let day8 () =
     let part1, part2 = Day8.execute input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
+let day9 () =
+    let input = File.ReadAllText "Data/day9.input"
+    let part1, part2 = Day9.score input
+    sprintf "part1 = %A, part2 = %A" part1 part2
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -51,6 +56,7 @@ let doDay (n : int) =
         | 6 -> day6 ()
         | 7 -> day7 ()
         | 8 -> day8 ()
+        | 9 -> day9 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
