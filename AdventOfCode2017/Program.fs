@@ -43,6 +43,10 @@ let day9 () =
     let part1, part2 = Day9.score input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
+let day10 () =
+    let input = "83,0,193,1,254,237,187,40,88,27,2,255,149,29,42,100"
+    sprintf "part1 = %A, part2 = %A" (Day10.knotHash1 input 256) (Day10.knotHash2 input)
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -57,6 +61,7 @@ let doDay (n : int) =
         | 7 -> day7 ()
         | 8 -> day8 ()
         | 9 -> day9 ()
+        | 10 -> day10 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
