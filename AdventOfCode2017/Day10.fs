@@ -22,4 +22,4 @@ let knotHash1 (str : string) =
     knotHash 1 (fun s -> s.[0] * s.[1] |> string) (str.Split ',' |> List.ofArray |> List.map int)
 
 let knotHash2 (str : string) =
-    knotHash 64 (fun s -> s |> Array.chunkBySize 16 |> Array.map (Array.reduce (^^^) >> sprintf "%02x") |> Array.reduce (+)) (List.append (str |> List.ofSeq |> List.map int) [ 17; 31; 73; 47; 23 ]) 256
+    knotHash 64 (Array.chunkBySize 16 >> Array.map (Array.reduce (^^^) >> sprintf "%02x") >> Array.reduce (+)) (List.append (str |> List.ofSeq |> List.map int) [ 17; 31; 73; 47; 23 ]) 256
