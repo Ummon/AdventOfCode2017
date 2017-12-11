@@ -48,7 +48,7 @@ let day10 () =
     sprintf "part1 = %A, part2 = %A" (Day10.knotHash1 input 256) (Day10.knotHash2 input)
 
 let day11 () =
-    let input = File.ReadAllText "Data/day11.input" |> Day11.parseInput
+    let input = File.ReadAllText "Data/day11.input"
     let part1, part2 = Day11.distanceInHex input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
