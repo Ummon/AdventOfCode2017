@@ -52,6 +52,11 @@ let day11 () =
     let part1, part2 = Day11.distanceInHex input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
+let day12 () =
+    let input = File.ReadAllLines "Data/day12.input" |> Day12.parseInput
+    let part1, part2 = Day12.f input
+    sprintf "part1 = %A, part2 = %A" part1 part2
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -68,6 +73,7 @@ let doDay (n : int) =
         | 9 -> day9 ()
         | 10 -> day10 ()
         | 11 -> day11 ()
+        | 12 -> day12 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
