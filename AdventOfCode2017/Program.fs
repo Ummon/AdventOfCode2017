@@ -54,7 +54,7 @@ let day11 () =
 
 let day12 () =
     let input = File.ReadAllLines "Data/day12.input" |> Day12.parseInput
-    let part1, part2 = Day12.f input
+    let part1, part2 = Day12.graphCount input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
 let doDay (n : int) =

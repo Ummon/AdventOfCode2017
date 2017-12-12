@@ -20,13 +20,14 @@ let parseInput (lines : string[]) : (Graph * string[]) list =
 let graphCount (input : (Graph * string[]) list) =
     let toVisit = Dictionary<string, Graph> ()
 
-    for g, names in input do
+    for g, _ in input do
         toVisit.Add (g.Name, g)
-        for name in names do
-            for g', _ in input do
-                if g'.Name = name then
-                    g'.Neighbors.Add (g)
-                    g.Neighbors.Add (g')
+
+    for g, neighbors in input do
+        for neighbor in neighbors do
+            let g' = toVisit.[neighbor]
+            g'.Neighbors.Add g
+            g.Neighbors.Add g'
 
     let visitedGroups = List<Dictionary<string, Graph>> ()
 
