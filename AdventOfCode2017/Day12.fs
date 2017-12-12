@@ -1,47 +1,27 @@
 ﻿module AdventOfCode2017.Day12
 
 open System
-open System.Linq
-open System.Collections.Generic
 
-type Graph =
-    {
-        Name : string
-        Neighbors : List<Graph>
-    }
+let parseInput (lines : string[]) : Map<int, Set<int>> =
+    lines
+    |> Array.fold (
+        fun dic str ->
+            let l = str.Split ([| ' '; ',' |], StringSplitOptions.RemoveEmptyEntries)
+            dic.Add (int l.[0], l.[2 .. l.Length - 1] |> Array.map int |> Set.ofArray)
+    ) Map.empty
 
-let parseInput (lines : string[]) : (Graph * string[]) list =
-    [
-        for line in lines do
-            let splitLine = line.Split ([| ' '; ',' |], StringSplitOptions.RemoveEmptyEntries)
-            yield { Name = splitLine.[0]; Neighbors = List<Graph> () }, splitLine.[2 .. splitLine.Length - 1]
-    ]
+let graphCount (g : Map<int, Set<int>>) =
 
-let graphCount (input : (Graph * string[]) list) =
-    let toVisit = Dictionary<string, Graph> ()
+    let rec visit (current : int) (visited : Set<int>) : Set<int> =
+        if visited |> Set.contains current then
+            Set.empty
+        else
+            seq { yield g.[current]; for neighbor in g.[current] -> visit neighbor (visited |> Set.add current) } |> Set.unionMany
 
-    for g, _ in input do
-        toVisit.Add (g.Name, g)
+    let rec nbRoots (vertices : Set<int>) =
+        if Set.isEmpty vertices then
+            0
+        else
+            1 + nbRoots (vertices - (visit (vertices |> Set.minElement) Set.empty))
 
-    for g, neighbors in input do
-        for neighbor in neighbors do
-            let g' = toVisit.[neighbor]
-            g'.Neighbors.Add g
-            g.Neighbors.Add g'
-
-    let visitedGroups = List<Dictionary<string, Graph>> ()
-
-    let rec visit (g : Graph) (dic : Dictionary<string, Graph>) =
-        if dic.ContainsKey g.Name |> not then
-            toVisit.Remove g.Name |> ignore
-            dic.Add (g.Name, g)
-            for n in g.Neighbors do
-                visit n dic
-
-    while toVisit.Count > 0 do
-        let dic = Dictionary<string, Graph> ()
-        visitedGroups.Add dic
-        visit (toVisit.First().Value) dic
-
-    visitedGroups.First().Count, visitedGroups.Count
-
+    visit 0 Set.empty |> Set.count, g |> Map.toList |> List.map fst |> Set.ofList |> nbRoots
