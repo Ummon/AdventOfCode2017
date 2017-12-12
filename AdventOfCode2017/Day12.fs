@@ -4,11 +4,11 @@ open System
 
 let parseInput (lines : string[]) : Map<int, Set<int>> =
     lines
-    |> Array.fold (
-        fun dic str ->
+    |> Array.map (
+        fun str ->
             let l = str.Split ([| ' '; ',' |], StringSplitOptions.RemoveEmptyEntries)
-            dic.Add (int l.[0], l.[2 .. l.Length - 1] |> Array.map int |> Set.ofArray)
-    ) Map.empty
+            int l.[0], l.[2..] |> Array.map int |> Set.ofArray
+    ) |> Map.ofArray
 
 let graphCount (g : Map<int, Set<int>>) =
     let rec visit (current : int) (visited : Set<int>) : Set<int> =
