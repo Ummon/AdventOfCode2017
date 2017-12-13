@@ -11,7 +11,7 @@ let parseInput (lines : string[]) =
     )
 
 let severity (input : (int * int)[]) : int * int =
-    let severity (f : int -> int -> int) delay =
+    let inline sumByF (f : int -> int -> int) delay =
         input |> Array.sumBy (fun (depth, range) -> if (depth + delay) % (2 * range - 2) = 0 then f depth range else 0)
 
-    severity (*) 0, Seq.initInfinite (fun i -> i, severity (+) i) |> Seq.pick (fun (i, s) -> if s = 0 then Some i else None)
+    sumByF (*) 0, Seq.initInfinite (fun i -> i, sumByF (+) i) |> Seq.pick (fun (i, s) -> if s = 0 then Some i else None)
