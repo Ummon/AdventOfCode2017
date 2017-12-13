@@ -1,17 +1,15 @@
 ﻿module AdventOfCode2017.Day13
 
-open System
-
 let parseInput (lines : string[]) =
     lines
     |> Array.map (
         fun line ->
-            let values = line.Split ([| ':'; ' ' |], StringSplitOptions.RemoveEmptyEntries)
+            let values = line.Split ([| ':'; ' ' |], System.StringSplitOptions.RemoveEmptyEntries)
             int values.[0], int values.[1]
     )
 
-let severity (input : (int * int)[]) : int * int =
-    let inline sumByF (f : int -> int -> int) delay =
-        input |> Array.sumBy (fun (depth, range) -> if (depth + delay) % (2 * range - 2) = 0 then f depth range else 0)
+let severity (input : (int * int)[]) =
+    let inline sum delay =
+        input |> Array.sumBy (fun (d, r) -> if (d + delay) % (2 * r - 2) = 0 then (d + delay) * r else 0)
 
-    sumByF (*) 0, Seq.initInfinite (fun i -> i, sumByF (+) i) |> Seq.pick (fun (i, s) -> if s = 0 then Some i else None)
+    sum 0, Seq.initInfinite (fun i -> i, sum i) |> Seq.pick (fun (i, s) -> if s = 0 then Some i else None)
