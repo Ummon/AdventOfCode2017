@@ -19,7 +19,6 @@ type ``Day13 tests`` (output : ITestOutputHelper) =
             |]
         Day13.severity (Day13.parseInput input) |> fst =! 24
 
-
     [<Fact>]
     let ``(Part2) From web page`` () =
         let input =
@@ -30,3 +29,12 @@ type ``Day13 tests`` (output : ITestOutputHelper) =
                 "6: 4"
             |]
         Day13.severity (Day13.parseInput input) |> snd =! 10
+
+
+    [<Fact>]
+    let ``(Part2) one depth`` () =
+        let input =
+            [|
+                "0: 3"
+            |]
+        Day13.severity (Day13.parseInput input) |> snd =! 1

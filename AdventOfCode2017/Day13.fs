@@ -9,7 +9,7 @@ let parseInput (lines : string[]) =
     )
 
 let severity (input : (int * int)[]) =
-    let inline sum delay =
-        input |> Array.sumBy (fun (d, r) -> if (d + delay) % (2 * r - 2) = 0 then (d + delay) * r else 0)
+    let inline sumBy (f : int -> int -> int) delay =
+        input |> Array.sumBy (fun (d, r) -> if (d + delay) % (2 * r - 2) = 0 then f d r else 0)
 
-    sum 0, Seq.initInfinite (fun i -> i, sum i) |> Seq.pick (fun (i, s) -> if s = 0 then Some i else None)
+    sumBy (*) 0, Seq.initInfinite (fun i -> i, sumBy (+) i) |> Seq.pick (fun (i, s) -> if s = 0 then Some i else None)
