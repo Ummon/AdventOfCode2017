@@ -57,6 +57,11 @@ let day12 () =
     let part1, part2 = Day12.graphCount input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
+let day13 () =
+    let input = File.ReadAllLines "Data/day13.input" |> Day13.parseInput
+    let part1, part2 = Day13.severity input
+    sprintf "part1 = %A, part2 = %A" part1 part2
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -74,6 +79,7 @@ let doDay (n : int) =
         | 10 -> day10 ()
         | 11 -> day11 ()
         | 12 -> day12 ()
+        | 13 -> day13 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
