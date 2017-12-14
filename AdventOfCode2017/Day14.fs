@@ -23,4 +23,4 @@
             else
                 0
 
-        seq { for i in 0 .. 127 do for j in 0 .. 127 -> remove i j } |> Seq.sum
+        [ for i in 0 .. 127 do for j in 0 .. 127 -> remove i j ] |> List.sum
