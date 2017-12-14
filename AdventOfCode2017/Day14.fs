@@ -1,8 +1,6 @@
 ﻿module AdventOfCode2017.Day14
 
-open System
-
-let hash = Day10.knotHash2Encoding (fun i -> Convert.ToString(i, 2).PadLeft(8, '0'))
+let hash = Day10.knotHash2Encoding (fun i -> System.Convert.ToString(i, 2).PadLeft(8, '0'))
 
 let buildMatrix (input : string) : bool[,] =
     let mat = Array2D.zeroCreate 128 128
@@ -21,10 +19,7 @@ let nbOfConnectedRegions (input : string) =
     let rec remove i j =
         if i >= 0 && i < 128 && j >= 0 && j < 128 && m.[i, j] then
             m.[i, j] <- false
-            remove (i + 1) j |> ignore
-            remove (i - 1) j |> ignore
-            remove i (j + 1) |> ignore
-            remove i (j - 1) |> ignore
+            (remove (i + 1) j, remove (i - 1) j, remove i (j + 1), remove i (j - 1)) |> ignore
             1
         else
             0
