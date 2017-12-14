@@ -62,6 +62,11 @@ let day13 () =
     let part1, part2 = Day13.severity input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
+let day14 () =
+    let part1 = Day14.nbOfUsedSquares "hwlqcszp"
+    let part2 = Day14.nbOfConnectedRegions "hwlqcszp"
+    sprintf "part1 = %A, part2 = %A" part1 part2
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -80,6 +85,7 @@ let doDay (n : int) =
         | 11 -> day11 ()
         | 12 -> day12 ()
         | 13 -> day13 ()
+        | 14 -> day14 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 

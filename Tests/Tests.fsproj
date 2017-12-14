@@ -68,6 +68,7 @@
     <Compile Include="Day11 tests.fs" />
     <Compile Include="Day12 tests.fs" />
     <Compile Include="Day13 tests.fs" />
+    <Compile Include="Day14 tests.fs" />
     <Content Include="packages.config" />
     <Content Include="App.config" />
   </ItemGroup>
