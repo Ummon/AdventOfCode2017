@@ -1,4 +1,4 @@
-﻿module AdventOfCode2017.Day2
+﻿module AdventOfCode2017.Day02
 
 open System
 

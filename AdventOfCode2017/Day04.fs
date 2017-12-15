@@ -1,4 +1,4 @@
-﻿module AdventOfCode2017.Day4
+﻿module AdventOfCode2017.Day04
 
 let forallDistinctPairs (f : string -> string -> bool) (pp : string) =
     let words = pp.Split ' '

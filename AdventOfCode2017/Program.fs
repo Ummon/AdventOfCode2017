@@ -3,48 +3,48 @@
 open System.IO
 open System
 
-let day1 () =
-    let captcha = File.ReadAllText "Data/day1.input" |> Day1.parseInput
-    sprintf "part1 = %A, part2 = %A" (Day1.solveCaptcha1 captcha) (Day1.solveCaptcha2 captcha)
+let day01 () =
+    let captcha = File.ReadAllText "Data/day01.input" |> Day01.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day01.solveCaptcha1 captcha) (Day01.solveCaptcha2 captcha)
 
-let day2 () =
-    let array = File.ReadAllText "Data/day2.input" |> Day2.parseInput
-    sprintf "part1 = %A, part2 = %A" (Day2.checksum1 array) (Day2.checksum2 array)
+let day02 () =
+    let array = File.ReadAllText "Data/day02.input" |> Day02.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day02.checksum1 array) (Day02.checksum2 array)
 
-let day3 () =
-    let input = 325489
-    sprintf "part1 = %A, part2 = %A" (Day3.spiralManhattanDistanceSum input) (Day3.spiralAdjacentSumBiggerThan input)
+let day03 () =
+    let input = File.ReadAllText "Data/day03.input" |> int
+    sprintf "part1 = %A, part2 = %A" (Day03.spiralManhattanDistanceSum input) (Day03.spiralAdjacentSumBiggerThan input)
 
-let day4 () =
-    let input = File.ReadAllLines "Data/day4.input"
-    sprintf "part1 = %A, part2 = %A" (Day4.nbPassphrasesValid Day4.passphraseValid input) (Day4.nbPassphrasesValid Day4.passphraseValidAnagram input)
+let day04 () =
+    let input = File.ReadAllLines "Data/day04.input"
+    sprintf "part1 = %A, part2 = %A" (Day04.nbPassphrasesValid Day04.passphraseValid input) (Day04.nbPassphrasesValid Day04.passphraseValidAnagram input)
 
-let day5 () =
-    let input = File.ReadAllText "Data/day5.input" |> Day5.parseInput
-    sprintf "part1 = %A, part2 = %A" (Day5.nbSteps1 input) (Day5.nbSteps2 input)
+let day05 () =
+    let input = File.ReadAllText "Data/day05.input" |> Day05.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day05.nbSteps1 input) (Day05.nbSteps2 input)
 
-let day6 () =
-    let input = File.ReadAllText "Data/day6.input" |> Day6.parseInput
-    let part1, part2 = Day6.nbRedistribution input
+let day06 () =
+    let input = File.ReadAllText "Data/day06.input" |> Day06.parseInput
+    let part1, part2 = Day06.nbRedistribution input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
-let day7 () =
-    let input = File.ReadAllLines "Data/day7.input" |> List.ofArray |> Day7.parseInput
-    let tower = Day7.buildTower input
-    sprintf "part1 = %A, part2 = %A" tower.Name (Day7.findUnbalanced tower |> Option.map (fun (t, w) -> t.Name, w))
+let day07 () =
+    let input = File.ReadAllLines "Data/day07.input" |> List.ofArray |> Day07.parseInput
+    let tower = Day07.buildTower input
+    sprintf "part1 = %A, part2 = %A" tower.Name (Day07.findUnbalanced tower |> Option.map (fun (t, w) -> t.Name, w))
 
-let day8 () =
-    let input = File.ReadAllLines "Data/day8.input" |> Day8.parseInput
-    let part1, part2 = Day8.execute input
+let day08 () =
+    let input = File.ReadAllLines "Data/day08.input" |> Day08.parseInput
+    let part1, part2 = Day08.execute input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
-let day9 () =
-    let input = File.ReadAllText "Data/day9.input"
-    let part1, part2 = Day9.score input
+let day09 () =
+    let input = File.ReadAllText "Data/day09.input"
+    let part1, part2 = Day09.score input
     sprintf "part1 = %A, part2 = %A" part1 part2
 
 let day10 () =
-    let input = "83,0,193,1,254,237,187,40,88,27,2,255,149,29,42,100"
+    let input = File.ReadAllText "Data/day10.input"
     sprintf "part1 = %A, part2 = %A" (Day10.knotHash1 input 256) (Day10.knotHash2 input)
 
 let day11 () =
@@ -76,15 +76,15 @@ let doDay (n : int) =
     sw.Start ()
     let result =
         match n with
-        | 1 -> day1 ()
-        | 2 -> day2 ()
-        | 3 -> day3 ()
-        | 4 -> day4 ()
-        | 5 -> day5 ()
-        | 6 -> day6 ()
-        | 7 -> day7 ()
-        | 8 -> day8 ()
-        | 9 -> day9 ()
+        |  1 -> day01 ()
+        |  2 -> day02 ()
+        |  3 -> day03 ()
+        |  4 -> day04 ()
+        |  5  -> day05 ()
+        |  6 -> day06 ()
+        |  7 -> day07 ()
+        |  8 -> day08 ()
+        |  9 -> day09 ()
         | 10 -> day10 ()
         | 11 -> day11 ()
         | 12 -> day12 ()

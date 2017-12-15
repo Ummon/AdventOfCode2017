@@ -55,15 +55,15 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Day1 tests.fs" />
-    <Compile Include="Day2 tests.fs" />
-    <Compile Include="Day3 tests.fs" />
-    <Compile Include="Day4 tests.fs" />
-    <Compile Include="Day5 tests.fs" />
-    <Compile Include="Day6 tests.fs" />
-    <Compile Include="Day7 tests.fs" />
-    <Compile Include="Day8 tests.fs" />
-    <Compile Include="Day9 tests.fs" />
+    <Compile Include="Day01 tests.fs" />
+    <Compile Include="Day02 tests.fs" />
+    <Compile Include="Day03 tests.fs" />
+    <Compile Include="Day04 tests.fs" />
+    <Compile Include="Day05 tests.fs" />
+    <Compile Include="Day06 tests.fs" />
+    <Compile Include="Day07 tests.fs" />
+    <Compile Include="Day08 tests.fs" />
+    <Compile Include="Day09 tests.fs" />
     <Compile Include="Day10 tests.fs" />
     <Compile Include="Day11 tests.fs" />
     <Compile Include="Day12 tests.fs" />

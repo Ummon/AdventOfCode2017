@@ -1,4 +1,4 @@
-﻿module AdventOfCode2017.Day9
+﻿module AdventOfCode2017.Day09
 
 let score (input : string) =
     let rec next (l : int) (lSum : int) (gb : bool) (gbSize : int) =

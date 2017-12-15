@@ -37,7 +37,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>bin\$(Configuration)\$(AssemblyName).XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
-    <StartArguments>15</StartArguments>
+    <StartArguments>
+    </StartArguments>
   </PropertyGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
@@ -57,15 +58,15 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Day1.fs" />
-    <Compile Include="Day2.fs" />
-    <Compile Include="Day3.fs" />
-    <Compile Include="Day4.fs" />
-    <Compile Include="Day5.fs" />
-    <Compile Include="Day6.fs" />
-    <Compile Include="Day7.fs" />
-    <Compile Include="Day8.fs" />
-    <Compile Include="Day9.fs" />
+    <Compile Include="Day01.fs" />
+    <Compile Include="Day02.fs" />
+    <Compile Include="Day03.fs" />
+    <Compile Include="Day04.fs" />
+    <Compile Include="Day05.fs" />
+    <Compile Include="Day06.fs" />
+    <Compile Include="Day07.fs" />
+    <Compile Include="Day08.fs" />
+    <Compile Include="Day09.fs" />
     <Compile Include="Day10.fs" />
     <Compile Include="Day11.fs" />
     <Compile Include="Day12.fs" />
@@ -75,28 +76,34 @@
     <Compile Include="Day15.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
-    <Content Include="Data\day1.input">
+    <Content Include="Data\day01.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day2.input">
+    <Content Include="Data\day02.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day4.input">
+    <Content Include="Data\day03.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day5.input">
+    <Content Include="Data\day04.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day6.input">
+    <Content Include="Data\day05.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day7.input">
+    <Content Include="Data\day06.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day8.input">
+    <Content Include="Data\day07.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\day9.input">
+    <Content Include="Data\day08.input">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day09.input">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day10.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\day11.input">

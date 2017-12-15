@@ -6,7 +6,7 @@ open Swensen.Unquote
 
 open AdventOfCode2017
 
-type ``Day8 tests`` (output : ITestOutputHelper) =
+type ``Day08 tests`` (output : ITestOutputHelper) =
 
     [<Fact>]
     let ``(Part1) From web page`` () =
@@ -17,7 +17,7 @@ type ``Day8 tests`` (output : ITestOutputHelper) =
                 "c dec -10 if a >= 1"
                 "c inc -20 if c == 10"
             |]
-        let p1, _ = Day8.execute (Day8.parseInput input)
+        let p1, _ = Day08.execute (Day08.parseInput input)
         p1 = 1
 
     [<Fact>]
@@ -29,5 +29,5 @@ type ``Day8 tests`` (output : ITestOutputHelper) =
                 "c dec -10 if a >= 1"
                 "c inc -20 if c == 10"
             |]
-        let _, p2 = Day8.execute (Day8.parseInput input)
+        let _, p2 = Day08.execute (Day08.parseInput input)
         p2 = 10

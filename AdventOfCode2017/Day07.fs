@@ -1,4 +1,4 @@
-﻿module AdventOfCode2017.Day7
+﻿module AdventOfCode2017.Day07
 
 open System
 open System.Linq

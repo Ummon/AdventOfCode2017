@@ -6,7 +6,7 @@ open Swensen.Unquote
 
 open AdventOfCode2017
 
-type ``Day7 tests`` (output : ITestOutputHelper) =
+type ``Day07 tests`` (output : ITestOutputHelper) =
 
     [<Fact>]
     let ``(Part1) From web page`` () =
@@ -26,7 +26,7 @@ type ``Day7 tests`` (output : ITestOutputHelper) =
                 "gyxo (61)"
                 "cntj (57)"
             ]
-        let tower = Day7.buildTower (Day7.parseInput input)
+        let tower = Day07.buildTower (Day07.parseInput input)
         tower.Name =! "tknk"
 
     [<Fact>]
@@ -47,9 +47,9 @@ type ``Day7 tests`` (output : ITestOutputHelper) =
                 "gyxo (61)"
                 "cntj (57)"
             ]
-        let tower = Day7.buildTower (Day7.parseInput input)
+        let tower = Day07.buildTower (Day07.parseInput input)
 
-        match Day7.findUnbalanced tower with
+        match Day07.findUnbalanced tower with
         | Some (tower, weight) ->
             tower.Name =! "ugml"
             weight =! 60
@@ -73,6 +73,6 @@ type ``Day7 tests`` (output : ITestOutputHelper) =
                 "gyxo (61)"
                 "cntj (57)"
             ]
-        let tower = Day7.buildTower (Day7.parseInput input)
+        let tower = Day07.buildTower (Day07.parseInput input)
 
-        Day7.findUnbalanced tower =! None
+        Day07.findUnbalanced tower =! None

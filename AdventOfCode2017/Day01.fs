@@ -1,4 +1,4 @@
-﻿module AdventOfCode2017.Day1
+﻿module AdventOfCode2017.Day01
 
 let readDigit d = int d - int '0'
 

@@ -1,4 +1,4 @@
-﻿module AdventOfCode2017.Day3
+﻿module AdventOfCode2017.Day03
 
 let directions = [| 1, 0; 0, 1; -1, 0; 0, -1 |]
 
