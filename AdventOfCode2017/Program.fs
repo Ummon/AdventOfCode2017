@@ -67,8 +67,9 @@ let day14 () =
     sprintf "part1 = %A, part2 = %A" (Day14.nbOfUsedSquares input) (Day14.nbOfConnectedRegions input)
 
 let day15 () =
-    let input = File.ReadAllText "Data/day15.input"
-    sprintf "part1 = %A, part2 = %A" () ()
+    let input = File.ReadAllLines "Data/day15.input"
+    let genA, genB = int64 input.[0], int64 input.[1]
+    sprintf "part1 = %A, part2 = %A" (Day15.nbSimilarities1 genA genB) (Day15.nbSimilarities2 genA genB)
 
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
