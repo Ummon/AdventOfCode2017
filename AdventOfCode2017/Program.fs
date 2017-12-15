@@ -71,6 +71,10 @@ let day15 () =
     let genA, genB = int64 input.[0], int64 input.[1]
     sprintf "part1 = %A, part2 = %A" (Day15.nbSimilarities1 genA genB) (Day15.nbSimilarities2 genA genB)
 
+let day16 () =
+    let input = File.ReadAllLines "Data/day16.input"
+    sprintf "part1 = %A, part2 = %A" () ()
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -91,6 +95,7 @@ let doDay (n : int) =
         | 13 -> day13 ()
         | 14 -> day14 ()
         | 15 -> day15 ()
+        | 16 -> day16 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
