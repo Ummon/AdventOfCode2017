@@ -72,8 +72,8 @@ let day15 () =
     sprintf "part1 = %A, part2 = %A" (Day15.nbSimilarities1 genA genB) (Day15.nbSimilarities2 genA genB)
 
 let day16 () =
-    let input = File.ReadAllLines "Data/day16.input"
-    sprintf "part1 = %A, part2 = %A" () ()
+    let input = File.ReadAllText "Data/day16.input" |> Day16.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day16.dance 16 1 input) (Day16.dance 16 1_000_000_000 input)
 
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
