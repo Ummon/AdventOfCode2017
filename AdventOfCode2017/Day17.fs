@@ -17,3 +17,12 @@ let spinLock2 (moves : int) =
         pos <- (pos + moves) % i + 1
         if pos = 1 then valueAt1 <- i
     valueAt1
+
+// Four times slower than 'spinLock2'.
+let spinLock2' (moves : int) =
+    seq { 1 .. 50_000_000 }
+    |> Seq.fold (
+        fun (pos, valueAt1) i ->
+            let pos' = (pos + moves) % i + 1
+            pos', if pos' = 1 then i else valueAt1
+    ) (0, 0) |> snd
