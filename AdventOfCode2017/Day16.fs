@@ -24,16 +24,13 @@ let parseInput (input : string) : DanceMove list =
 
 let dance (size : int) (nb : int) (moves : DanceMove list) : string =
     let initialState = Array.init size (fun i -> char i + 'a')
-    let danceFloor = Array.copy initialState
 
-    let find c = danceFloor |> Array.findIndex ((=) c)
-    let swap p1 p2 =
-        let tmp = danceFloor.[p1]
-        danceFloor.[p1] <- danceFloor.[p2]
-        danceFloor.[p2] <- tmp
-
-    let mutable n = nb
-    while n <> 0 do
+    let applyMoves (danceFloor : char[]) =
+        let find c = danceFloor |> Array.findIndex ((=) c)
+        let swap p1 p2 =
+            let tmp = danceFloor.[p1]
+            danceFloor.[p1] <- danceFloor.[p2]
+            danceFloor.[p2] <- tmp
         for move in moves do
             match move with
             | Spin s ->
@@ -47,11 +44,16 @@ let dance (size : int) (nb : int) (moves : DanceMove list) : string =
             | Partner (a, b) ->
                 swap (find a) (find b)
 
-        n <- n - 1
-        if danceFloor |=| initialState then
-            n <- nb % (nb - n)
+    let cycle =
+        ((0, initialState), Seq.initInfinite id)
+        ||> Seq.scan (
+            fun (_, previous) i ->
+                let current = previous.[*]
+                applyMoves current
+                i + 1, current
+        )
+        |> Seq.takeWhile (fun (i, state) -> i = 0 || not (state |=| initialState))
+        |> Seq.map snd
+        |> Array.ofSeq
 
-    String danceFloor
-
-
-
+    cycle.[nb % cycle.Length] |> String
