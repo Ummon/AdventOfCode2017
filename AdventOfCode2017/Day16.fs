@@ -34,7 +34,7 @@ let dance (size : int) (nb : int) (moves : DanceMove list) : string =
         for move in moves do
             match move with
             | Spin s ->
-                let last = danceFloor.[size - s ..] |> Array.rev
+                let last = danceFloor.[size - s ..]
                 Array.Copy (danceFloor, 0, danceFloor, s, size - s)
                 Array.Copy (last, danceFloor, s)
             | Exchange (p1, p2) ->
@@ -50,7 +50,7 @@ let dance (size : int) (nb : int) (moves : DanceMove list) : string =
                 applyMoves current
                 i + 1, current
         )
-        |> Seq.takeWhile (fun (i, state) -> i = 0 || not (state |=| initialState))
+        |> Seq.takeWhile (fun (i, state) -> i = 0 || i <= nb && not (state |=| initialState))
         |> Seq.map snd
         |> Array.ofSeq
 
