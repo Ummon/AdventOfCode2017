@@ -34,11 +34,9 @@ let dance (size : int) (nb : int) (moves : DanceMove list) : string =
         for move in moves do
             match move with
             | Spin s ->
-                for i = 1 to s do
-                    let last = danceFloor.[size - 1]
-                    for j in size - 1 .. -1 .. 1 do
-                        danceFloor.[j] <- danceFloor.[j - 1]
-                    danceFloor.[0] <- last
+                let last = danceFloor.[size - s ..] |> Array.rev
+                Array.Copy (danceFloor, 0, danceFloor, s, size - s)
+                Array.Copy (last, danceFloor, s)
             | Exchange (p1, p2) ->
                 swap p1 p2
             | Partner (a, b) ->
