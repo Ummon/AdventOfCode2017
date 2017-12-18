@@ -43,16 +43,15 @@ let dance (size : int) (nb : int) (moves : DanceMove list) : string =
                 swap (find a) (find b)
 
     let cycle =
-        (initialState, Seq.initInfinite id)
-        ||> Seq.scan (
-            fun previous _ ->
-                let current = previous.[*]
-                applyMoves current
-                current
+        (0, initialState)
+        |> Array.unfold (
+            fun (i, current) ->
+                if i <> 0 && (i > nb || current |=| initialState) then
+                    None
+                else
+                    let next = current.[*]
+                    applyMoves next
+                    Some (current, (i + 1, next))
         )
-        |> Seq.indexed
-        |> Seq.takeWhile (fun (i, state) -> i = 0 || i <= nb && not (state |=| initialState))
-        |> Seq.map snd
-        |> Array.ofSeq
 
     cycle.[nb % cycle.Length] |> String
