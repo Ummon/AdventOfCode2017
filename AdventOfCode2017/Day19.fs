@@ -8,11 +8,11 @@ let followThePath (lines : string[]) : string * int =
         let c = lines.[i'].[j']
         if c = '+' then
             let nextDir =
-                [ '-', 0, 1; '|', -1, 0; '-', 0, -1; '|', 1, 0 ]
+                [ 0, 1; -1, 0; 0, -1; 1, 0 ]
                 |> List.pick (
-                    fun (c', ndi, ndj) ->
+                    fun (ndi, ndj) ->
                         let ni, nj = i' + ndi, j' + ndj
-                        if (ni, nj) <> (i, j) && (Char.IsLetter lines.[ni].[nj] || lines.[ni].[nj] = c') then Some (ndi, ndj) else None
+                        if (ni, nj) <> (i, j) && (Char.IsWhiteSpace lines.[ni].[nj] |> not) then Some (ndi, ndj) else None
                 )
             next (i', j') nextDir str (n + 1)
         elif Char.IsWhiteSpace c |> not then
