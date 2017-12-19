@@ -83,6 +83,11 @@ let day18 () =
     let input = File.ReadAllLines "Data/day18.input"
     sprintf "part1 = %A, part2 = %A" (Day18Part1.run (Day18Part1.parseInput input)) (Day18Part2.run (Day18Part2.parseInput input))
 
+let day19 () =
+    let input = File.ReadAllLines "Data/day19.input"
+    let word, length = Day19.followThePath input
+    sprintf "part1 = %A, part2 = %A" word length
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -106,6 +111,7 @@ let doDay (n : int) =
         | 16 -> day16 ()
         | 17 -> day17 ()
         | 18 -> day18 ()
+        | 19 -> day19 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 
