@@ -22,41 +22,41 @@ let parseInput (input : string[]) : Particule[] =
             }
     )
 
+// This is wrong with a manhattan distance :( but works in my case :)
 let nearestZero (particules : Particule[]) : int =
     particules |> Array.indexed |> Array.minBy (fun (_, p) -> p.A.SquareNorm, p.V.SquareNorm, p.Pos.SquareNorm) |> fst
 
-let collide (p1 : Particule) (p2 : Particule) : int64 option =
+let collide (p1 : Particule) (p2 : Particule) : int option =
+    // https://www.wolframalpha.com/input/?i=solve+a%2B(b%2Bc%2F2)*t%2B1%2F2*c*t%5E2+-+d-(e%2Bf%2F2)*t-1%2F2*f*t%5E2+%3D+0
     let t a b c d e f =
         let denom = 2. * (c - f)
         if denom = 0. then
-            (d - a) / (b - e)
+            [ (d - a) / (b - e) ] // 0 / 0 -> NaN (particules have the same properties), n / 0 -> infinite (particules don't collide)
         else
             let root = (2. * b + c - 2. * e - f) ** 2. - 8. * (a - d) * (c - f)
             if root < 0. then
-                Double.PositiveInfinity
+                [ Double.PositiveInfinity ]
             else
                 let f sign = (-2. * b - c + 2. * e + f + sign * sqrt root) / denom
-                max (f 1.) (f -1.)
+                [ f 1.; f -1. ] |> List.filter ((<=) 0.)
 
     let ts =
         [
-            t p1.Pos.X p1.V.X p1.A.X p2.Pos.X p2.V.X p2.A.X
-            t p1.Pos.Y p1.V.Y p1.A.Y p2.Pos.Y p2.V.Y p2.A.Y
-            t p1.Pos.Z p1.V.Z p1.A.Z p2.Pos.Z p2.V.Z p2.A.Z
+            yield! t p1.Pos.X p1.V.X p1.A.X p2.Pos.X p2.V.X p2.A.X
+            yield! t p1.Pos.Y p1.V.Y p1.A.Y p2.Pos.Y p2.V.Y p2.A.Y
+            yield! t p1.Pos.Z p1.V.Z p1.A.Z p2.Pos.Z p2.V.Z p2.A.Z
         ]
-        |> List.filter (Double.IsNaN >> not)
 
-    if ts |> List.isEmpty then
-        Some 0L
-    elif ts |> List.exists (fun t -> Double.IsInfinity t || t < 0.) then
-        None
-    else
-        let tsInt = ts |> List.map (fun t -> t * 10. |> int64) // Rounding.
-        let h = tsInt |> List.head
-        if tsInt |> List.tail |> List.forall ((=) h) then
-            Some h
-        else
-            None
+    let nbOfNaN = ts |> List.sumBy (fun t -> if Double.IsNaN t then 1 else 0)
+
+    let tsInt =
+        ts |> List.choose (
+            fun t ->
+                let tRound = Math.Round (t, 5) * 10000. |> int
+                if tRound % 10000 = 0 then Some tRound else None
+        )
+
+    tsInt |> List.groupBy id |> List.tryPick (fun (t, ts) -> if List.length ts = (3 - nbOfNaN) then Some t else None)
 
 let nbAlive (particules : Particule[]) : int =
     let nbDestroyed =
