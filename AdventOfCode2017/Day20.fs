@@ -5,7 +5,7 @@ open System
 type Vec =
     { X : float; Y : float; Z : float }
     with
-        member this.SquareNorm = this.X ** 2. + this.Y ** 2. + this.Z ** 2.
+        member this.ManhattanNorm = abs this.X  + abs this.Y + abs this.Z
 
 type Particule =
     { Pos : Vec; V : Vec; A : Vec }
@@ -22,9 +22,8 @@ let parseInput (input : string[]) : Particule[] =
             }
     )
 
-// This is wrong with a manhattan distance :( but works in my case :)
 let nearestZero (particules : Particule[]) : int =
-    particules |> Array.indexed |> Array.minBy (fun (_, p) -> p.A.SquareNorm, p.V.SquareNorm, p.Pos.SquareNorm) |> fst
+    particules |> Array.indexed |> Array.minBy (fun (_, p) -> p.A.ManhattanNorm, p.V.ManhattanNorm, p.Pos.ManhattanNorm) |> fst
 
 let collide (p1 : Particule) (p2 : Particule) : int option =
     // https://www.wolframalpha.com/input/?i=solve+a%2B(b%2Bc%2F2)*t%2B1%2F2*c*t%5E2+-+d-(e%2Bf%2F2)*t-1%2F2*f*t%5E2+%3D+0
@@ -52,7 +51,7 @@ let collide (p1 : Particule) (p2 : Particule) : int option =
     let tsInt =
         ts |> List.choose (
             fun t ->
-                let tRound = Math.Round (t, 5) * 10000. |> int
+                let tRound = Math.Round (t, 4) * 10000. |> int
                 if tRound % 10000 = 0 then Some tRound else None
         )
 

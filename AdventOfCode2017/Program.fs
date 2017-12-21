@@ -89,7 +89,6 @@ let day19 () =
     sprintf "part1 = %A, part2 = %A" word length
 
 let day20 () =
-    //let input = File.ReadAllLines "../../Data/day20_ben.input" |> Day20.parseInput
     let input = File.ReadAllLines "Data/day20.input" |> Day20.parseInput
     sprintf "part1 = %A, part2 = %A" (Day20.nearestZero input) (Day20.nbAlive input)
 
