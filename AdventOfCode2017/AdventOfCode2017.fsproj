@@ -80,6 +80,7 @@
     <Compile Include="Day19.fs" />
     <Compile Include="Day20.fs" />
     <Compile Include="Day21.fs" />
+    <Compile Include="Day22.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="Data\day01.input">
@@ -142,7 +143,12 @@
     <Content Include="Data\day20.input">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Data\day21.input" />
+    <Content Include="Data\day21.input">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day22.input">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

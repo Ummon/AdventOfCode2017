@@ -10,9 +10,10 @@ open AdventOfCode2017
 type ``Day21 tests`` (output : ITestOutputHelper) =
 
     [<Fact>]
-    let ``(Part1) From web page`` () =
-            ()
-
-    [<Fact>]
-    let ``(Part2) From web page`` () =
-            ()
+    let ``From web page`` () =
+        let input =
+            [|
+                "../.# => ##./#../..."
+                ".#./..#/### => #..#/..../..../#..#"
+            |] |> Day21.parseInput
+        Day21.fractalArt input 2 =! 12
