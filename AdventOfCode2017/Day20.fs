@@ -5,7 +5,7 @@ open System
 type Vec =
     { X : float; Y : float; Z : float }
     with
-        member this.ManhattanNorm = abs this.X  + abs this.Y + abs this.Z
+        member this.ManhattanNorm = abs this.X + abs this.Y + abs this.Z
 
 type Particule =
     { Pos : Vec; V : Vec; A : Vec }
