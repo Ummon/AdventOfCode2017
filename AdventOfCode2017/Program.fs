@@ -97,8 +97,8 @@ let day21 () =
     sprintf "part1 = %A, part2 = %A" (Day21.fractalArt input 5) (Day21.fractalArt input 18)
 
 let day22 () =
-    //let input = File.ReadAllLines "Data/day21.input" |> Day21.parseInput
-    sprintf "part1 = %A, part2 = %A" () ()
+    let input = File.ReadAllLines "Data/day22.input" |> Day22.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day22.infection1 input) (Day22.infection2 input)
 
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()

@@ -11,8 +11,20 @@ type ``Day22 tests`` (output : ITestOutputHelper) =
 
     [<Fact>]
     let ``(Part1) From web page`` () =
-        ()
+        let input =
+            [|
+                "..#"
+                "#.."
+                "..."
+            |] |> Day22.parseInput
+        Day22.infection1 input =! 5587
 
     [<Fact>]
     let ``(Part2) From web page`` () =
-        ()
+        let input =
+            [|
+                "..#"
+                "#.."
+                "..."
+            |] |> Day22.parseInput
+        Day22.infection2 input =! 2511944
