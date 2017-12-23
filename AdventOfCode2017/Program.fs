@@ -100,6 +100,10 @@ let day22 () =
     let input = File.ReadAllLines "Data/day22.input" |> Day22.parseInput
     sprintf "part1 = %A, part2 = %A" (Day22.infection1 input) (Day22.infection2 input)
 
+let day23 () =
+    let input = File.ReadAllLines "Data/day23.input" |> Day23.parseInput
+    sprintf "part1 = %A, part2 = %A" (Day23.run input) (Day23.debug ())
+
 let doDay (n : int) =
     let sw = Diagnostics.Stopwatch ()
     sw.Start ()
@@ -127,6 +131,7 @@ let doDay (n : int) =
         | 20 -> day20 ()
         | 21 -> day21 ()
         | 22 -> day22 ()
+        | 23 -> day23 ()
         | _ -> raise <| NotImplementedException ()
     printfn "Result of day %i: %s (time : %i ms)" n result sw.ElapsedMilliseconds
 

@@ -13,9 +13,9 @@ let parseInput (lines : string[]) : M =
                 m.Add ((x - lines.[y].Length / 2, -y + lines.Length / 2), Infected)
     m
 
-let reverse (dx, dy) = -dx, -dy
+let inline reverse (dx, dy) = -dx, -dy
 let turnRight = function 1, 0 -> 0, -1 | 0, 1 ->  1, 0 | -1, 0 -> 0, 1  | _ -> -1, 0
-let turnLeft  = turnRight >> reverse
+let turnLeft = turnRight >> reverse
 
 let infection (rule : CellState -> CellState * ((int * int) -> (int * int))) (nbIterations : int) (m : M) : int =
     let rec burst (x, y) d n becomeInfected =
