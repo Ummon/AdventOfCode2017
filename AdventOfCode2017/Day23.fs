@@ -1,7 +1,5 @@
 ﻿module AdventOfCode2017.Day23
 
-open System
-
 type From =
     | FromReg of char
     | FromValue of int64
@@ -13,7 +11,7 @@ type Instruction =
     | Jump of From * From
 
 let parseInput (lines : string[]) : Instruction[] =
-    let readFrom (str : string) = if Char.IsLetter str.[0] then FromReg str.[0] else FromValue (int64 str)
+    let readFrom (str : string) = if System.Char.IsLetter str.[0] then FromReg str.[0] else FromValue (int64 str)
     lines
     |> Array.map (
         fun line ->
@@ -51,6 +49,7 @@ let debug () =
     while not ``end`` do
         let mutable f = 1
         let mutable d = 2
+
         let mutable loop = true
         while loop do
             f <- if b % d = 0 then 0 else f
@@ -61,7 +60,6 @@ let debug () =
             h <- h + 1
 
         ``end`` <- b = c
-
         b <- b + 17
     h
 
